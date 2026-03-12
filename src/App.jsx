@@ -17,6 +17,7 @@ export default function App() {
   const [filter, setFilter] = useState("all");
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useLocalStorage("tasks", []);
+  const [theme, setTheme] = useLocalStorage("theme", "light");
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -28,6 +29,7 @@ export default function App() {
   const allTasksCompleted = tasks.length > 0 && tasks.every((task) => task.done);
   const hasCompletedTasks = tasks.some((task) => task.done);
   const hasAnyTasks = tasks.length > 0;
+  const isDark = theme === "dark";
 
   function addTask(text) {
     const trimmedText = text.trim();
@@ -107,12 +109,37 @@ export default function App() {
 
   const doneTasks = tasks.filter((t) => t.done).length;
 
+  function toggleTheme() {
+  setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+}
+
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center px-4 py-10">
-      <div className="w-full max-w-md rounded-xl bg-white p-5 sm:p-6 shadow-lg">
-        <h1 className="mb-5 text-center text-2xl font-semibold text-gray-800">
+    <div
+      className={`min-h-screen flex justify-center px-4 py-10 ${
+        isDark ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
+      }`}
+    >
+      <div
+        className={`w-full max-w-md rounded-xl p-5 shadow-lg sm:p-6 ${
+        isDark ? "bg-gray-800 text-white" : "bg-white text-black"
+        }`}
+      >
+        <h1
+          className={`mb-5 text-center text-2xl font-semibold ${
+          isDark ? "text-gray-300" : "text-gray-800"
+          }`}
+        >
           Todo App
         </h1>
+
+        <div className="mb-4 flex justify-end">
+          <button
+            onClick={toggleTheme}
+            className={` rounded px-3 py-1 text-sm ${isDark ? "bg-gray-600" : "bg-gray-200"}`}
+          >
+            {isDark ? "☀️ Light" : "🌙 Dark"}
+          </button>
+        </div>
 
         <TaskInput task={task} setTask={setTask} addTask={addTask} />
 
@@ -121,7 +148,7 @@ export default function App() {
             onClick={() => setFilter("all")}
             className={
               "rounded px-3 py-1 text-sm " +
-              (filter === "all" ? "bg-blue-500 text-white" : "bg-gray-200")
+              (filter === "all" ? "bg-blue-500 text-white" : `${isDark ? "bg-gray-600" : "bg-gray-200"}`)
             }
           >
             Wszystkie
@@ -131,7 +158,7 @@ export default function App() {
             onClick={() => setFilter("active")}
             className={
               "rounded px-3 py-1 text-sm " +
-              (filter === "active" ? "bg-blue-500 text-white" : "bg-gray-200")
+              (filter === "active" ? "bg-blue-500 text-white" : `${isDark ? "bg-gray-600" : "bg-gray-200"}`)
             }
           >
             Aktywne
@@ -141,7 +168,7 @@ export default function App() {
             onClick={() => setFilter("done")}
             className={
               "rounded px-3 py-1 text-sm " +
-              (filter === "done" ? "bg-blue-500 text-white" : "bg-gray-200")
+              (filter === "done" ? "bg-blue-500 text-white" : `${isDark ? "bg-gray-600" : "bg-gray-200"}`)
             }
           >
             Ukończone
@@ -185,6 +212,7 @@ export default function App() {
               deleteTask={deleteTask}
               toggleTask={toggleTask}
               editTask={editTask}
+              isDark={isDark}
             />
           </DndContext>
         ) : (
@@ -193,6 +221,7 @@ export default function App() {
             deleteTask={deleteTask}
             toggleTask={toggleTask}
             editTask={editTask}
+            isDark={isDark}
           />
         )}
 

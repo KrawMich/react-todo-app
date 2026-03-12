@@ -9,10 +9,17 @@ export default function TaskList({
   deleteTask,
   toggleTask,
   editTask,
+  isDark
 }) {
   if (tasks.length === 0) {
     return (
-      <div className="rounded-lg border border-dashed border-gray-300 bg-gray-50 px-4 py-6 text-center text-sm text-gray-500">
+      <div
+        className={`rounded-lg border border-dashed px-4 py-6 text-center text-sm ${
+          isDark
+            ? "bg-gray-700 border-gray-600 text-gray-300"
+            : "bg-gray-50 border-gray-300 text-gray-500"
+        }`}
+      >
         Brak zadań do wyświetlenia.
       </div>
     );
@@ -31,6 +38,7 @@ export default function TaskList({
             deleteTask={deleteTask}
             toggleTask={toggleTask}
             editTask={editTask}
+            isDark={isDark}
           />
         ))}
       </ul>

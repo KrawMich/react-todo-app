@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-export default function TaskItem({ task, deleteTask, toggleTask, editTask }) {
+export default function TaskItem({ task, deleteTask, toggleTask, editTask, isDark }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(task.text);
   const inputRef = useRef(null);
@@ -56,9 +56,9 @@ export default function TaskItem({ task, deleteTask, toggleTask, editTask }) {
     <li
       ref={setNodeRef}
       style={style}
-      className={`my-2 flex items-center gap-2 rounded-lg border bg-white px-2 py-2 shadow-sm ${
-        isDragging ? "bg-gray-100 opacity-60" : ""
-      }`}
+      className={`my-2 flex items-center gap-2 rounded-lg border px-2 py-2 shadow-sm ${
+      isDark ? "bg-gray-700" : "bg-white"
+      } ${isDragging ? "opacity-60" : ""}`}
     >
       {!isEditing && (
         <button
@@ -94,7 +94,13 @@ export default function TaskItem({ task, deleteTask, toggleTask, editTask }) {
       ) : (
         <span
           className={`min-w-0 flex-1 break-words text-sm ${
-            task.done ? "text-gray-400 line-through" : "text-gray-800"
+            task.done
+              ? isDark
+                ? "text-gray-500 line-through"
+                : "text-gray-400 line-through"
+              : isDark
+              ? "text-gray-200"
+              : "text-gray-800"
           }`}
         >
           {task.text}
