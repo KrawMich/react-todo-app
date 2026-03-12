@@ -2,8 +2,11 @@
 
 Simple todo application built with React and TailwindCSS.
 
-## Features
+## Live Demo
 
+[Open app](https://react-todo-app-gray-xi.vercel.app/)
+
+## Features
 - add tasks
 - edit tasks
 - delete tasks
