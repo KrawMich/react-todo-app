@@ -2,22 +2,26 @@
 
 Simple todo application built with React and TailwindCSS.
 
+## Screenshot
+
+![Todo App](./assets/todo-app.png)
+
 ## Live Demo
 
 [Open app](https://react-todo-app-gray-xi.vercel.app/)
 
 ## Features
-- add tasks
-- edit tasks
-- delete tasks
-- mark tasks as completed
-- filter tasks (all / active / done)
-- drag & drop reordering
-- localStorage persistence
 
-## Tech stack
+- Add / edit / delete tasks
+- Drag & drop sorting (dnd-kit)
+- Task filtering (all / active / done)
+- Bulk actions (complete all / clear completed)
+- Dark mode with saved preference
+- Data persistence using localStorage
 
-- React
+## Tech Stack
+
+- React 19
 - Vite
 - TailwindCSS
 - dnd-kit
