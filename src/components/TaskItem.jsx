@@ -66,8 +66,8 @@ export default function TaskItem({ task, deleteTask, toggleTask, editTask, isDar
           {...attributes}
           {...listeners}
           className="shrink-0 cursor-grab rounded px-2 py-1 text-gray-500 active:cursor-grabbing"
-          aria-label="Przeciągnij task"
-          title="Przeciągnij task"
+          aria-label="Drag task"
+          title="Drag task"
         >
           ☰
         </button>
@@ -112,7 +112,7 @@ export default function TaskItem({ task, deleteTask, toggleTask, editTask, isDar
           className="rounded bg-red-500 px-3 py-1 text-sm text-white hover:bg-red-600"
           onClick={() => deleteTask(task.id)}
         >
-          Usuń
+          Delete
         </button>
 
         {!isEditing ? (
@@ -120,14 +120,14 @@ export default function TaskItem({ task, deleteTask, toggleTask, editTask, isDar
             className="rounded bg-gray-500 px-3 py-1 text-sm text-white hover:bg-gray-600"
             onClick={() => setIsEditing(true)}
           >
-            Edytuj
+            Edit
           </button>
         ) : (
           <button
             className="rounded bg-green-500 px-3 py-1 text-sm text-white hover:bg-green-600"
             onClick={handleSave}
           >
-            Zapisz
+            Save
           </button>
         )}
       </div>

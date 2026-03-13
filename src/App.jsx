@@ -80,7 +80,7 @@ export default function App() {
   }
 
   function clearCompleted() {
-    const confirmDelete = window.confirm("Usunąć wszystkie ukończone zadania?");
+    const confirmDelete = window.confirm("Delete all completed tasks?");
 
     if (confirmDelete) {
       setTasks((prevTasks) => prevTasks.filter((task) => !task.done));
@@ -151,7 +151,7 @@ export default function App() {
               (filter === "all" ? "bg-blue-500 text-white" : `${isDark ? "bg-gray-600" : "bg-gray-200"}`)
             }
           >
-            Wszystkie
+            All
           </button>
 
           <button
@@ -161,7 +161,7 @@ export default function App() {
               (filter === "active" ? "bg-blue-500 text-white" : `${isDark ? "bg-gray-600" : "bg-gray-200"}`)
             }
           >
-            Aktywne
+            Active
           </button>
 
           <button
@@ -171,7 +171,7 @@ export default function App() {
               (filter === "done" ? "bg-blue-500 text-white" : `${isDark ? "bg-gray-600" : "bg-gray-200"}`)
             }
           >
-            Ukończone
+            Completed
           </button>
         </div>
 
@@ -181,7 +181,7 @@ export default function App() {
               onClick={toggleAllTasks}
               className="rounded bg-green-500 px-3 py-1 text-sm text-white hover:bg-green-600"
             >
-              {allTasksCompleted ? "Odznacz wszystkie" : "Oznacz wszystkie"}
+              {allTasksCompleted ? "Uncomplete all" : "Complete all"}
             </button>
 
             {hasCompletedTasks && (
@@ -189,7 +189,7 @@ export default function App() {
                 onClick={clearCompleted}
                 className="rounded bg-red-500 px-3 py-1 text-sm text-white hover:bg-red-600"
               >
-                Usuń ukończone
+                Clear completed
               </button>
             )}
           </div>
@@ -197,7 +197,7 @@ export default function App() {
 
         {filter !== "all" && (
           <p className="mb-3 text-sm text-orange-600">
-            Przeciąganie działa tylko w widoku „Wszystkie”.
+            Drag and drop works only in the “All” view.
           </p>
         )}
 
@@ -226,8 +226,8 @@ export default function App() {
         )}
 
         <p className="mt-4 text-sm text-gray-500">
-          Wszystkie: {tasks.length} <br />
-          Ukończone: {doneTasks}
+          All: {tasks.length} <br />
+          Completed: {doneTasks}
         </p>
       </div>
     </div>

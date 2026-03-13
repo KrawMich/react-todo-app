@@ -20,7 +20,7 @@ export default function TaskList({
             : "bg-gray-50 border-gray-300 text-gray-500"
         }`}
       >
-        Brak zadań do wyświetlenia.
+        No tasks to display
       </div>
     );
   }

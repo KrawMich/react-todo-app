@@ -17,7 +17,7 @@ export default function TaskInput({ task, setTask, addTask }) {
       <input
         value={task}
         onChange={(e) => setTask(e.target.value)}
-        placeholder="Nowe zadanie"
+        placeholder="New task..."
         className="w-full flex-1 rounded border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
 
@@ -26,7 +26,7 @@ export default function TaskInput({ task, setTask, addTask }) {
         disabled={!task.trim()}
         className="rounded bg-blue-500 px-4 py-2 text-sm text-white hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed sm:w-auto"
       >
-        Dodaj
+        Add
       </button>
     </form>
   );
