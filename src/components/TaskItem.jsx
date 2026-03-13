@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { motion } from "framer-motion";
 
 export default function TaskItem({ task, deleteTask, toggleTask, editTask, isDark }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -53,12 +54,15 @@ export default function TaskItem({ task, deleteTask, toggleTask, editTask, isDar
   }
 
   return (
-    <li
+    <motion.li
       ref={setNodeRef}
       style={style}
       className={`my-2 flex items-center gap-2 rounded-lg border px-2 py-2 shadow-sm ${
       isDark ? "bg-gray-700" : "bg-white"
       } ${isDragging ? "opacity-60" : ""}`}
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 10 }}
     >
       {!isEditing && (
         <button
@@ -131,6 +135,6 @@ export default function TaskItem({ task, deleteTask, toggleTask, editTask, isDar
           </button>
         )}
       </div>
-    </li>
+    </motion.li>
   );
 }

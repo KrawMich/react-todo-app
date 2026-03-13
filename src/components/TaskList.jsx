@@ -3,6 +3,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import TaskItem from "./TaskItem";
+import { AnimatePresence } from "framer-motion";
 
 export default function TaskList({
   tasks,
@@ -30,17 +31,20 @@ export default function TaskList({
       items={tasks.map((task) => task.id)}
       strategy={verticalListSortingStrategy}
     >
+      
       <ul className="space-y-2">
-        {tasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            deleteTask={deleteTask}
-            toggleTask={toggleTask}
-            editTask={editTask}
-            isDark={isDark}
-          />
-        ))}
+        <AnimatePresence>
+          {tasks.map((task) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              deleteTask={deleteTask}
+              toggleTask={toggleTask}
+              editTask={editTask}
+              isDark={isDark}
+            />
+          ))}
+        </AnimatePresence>
       </ul>
     </SortableContext>
   );
