@@ -4,7 +4,7 @@ Simple todo application built with React and TailwindCSS.
 
 ## Screenshot
 
-![Todo App](src/assets/screenshots/todo-app.png)
+![Todo App](screenshots/todo-app.png)
 
 ## Live Demo
 
