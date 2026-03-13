@@ -23,7 +23,8 @@ export default function TaskInput({ task, setTask, addTask }) {
 
       <button
         type="submit"
-        className="rounded bg-blue-500 px-4 py-2 text-sm text-white hover:bg-blue-600 sm:w-auto"
+        disabled={!task.trim()}
+        className="rounded bg-blue-500 px-4 py-2 text-sm text-white hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed sm:w-auto"
       >
         Dodaj
       </button>
